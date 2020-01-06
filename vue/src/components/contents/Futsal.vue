@@ -1,14 +1,14 @@
 <template>
  <div>
- <home2></home2>
+ <futsal-home></futsal-home>
   </div>
 </template>
 
 <script>
-import Home2 from '@/components/futsal/Home2.vue'
+import FutsalHome from '@/components/futsal/FutsalHome.vue'
 export default {
   components:{
-    Home2
+    FutsalHome
   }
 }
 </script>

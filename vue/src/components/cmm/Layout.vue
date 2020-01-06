@@ -22,21 +22,17 @@ export default{
 </script>
 <style scoped>
 #wrapper {
-     padding: 5px;
-     width: 1400px;
-     margin: 20px auto;
+     width: 1900px;
+     text-align: -webkit-center;
 }
 header {
-     width: 1400px;
-     height: 60px;
-     /* padding: 0 15px; */
+     height: 66px;
 }
 #content {
      /* margin: 0 auto; */
      /* width: 1400px; */
      /* float: left; */
      /* padding: 5px 15px; */
-     /* min-height: 600px; */
 }
 /* #sidebar {
      margin: 50px 0px 0px 0px;
@@ -48,11 +44,9 @@ footer {
      /* clear: both; */
      /* height: 60px;
      padding: 0 15px; */
-     height: 60px;
-     padding: 0 0 0 15px;
 }
 /* 가로폭 980보다 작을 때 사용할 @media query */
-@media screen and (max-width: 1200px) {     
+@media screen and (max-width: 980px) {     
      #pagewrap {
            width: 94%;
      }

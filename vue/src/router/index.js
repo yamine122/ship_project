@@ -18,10 +18,11 @@ import Update from '@/components/article/Update.vue'
 import Write from '@/components/article/Write.vue'
 import Futsal from '@/components/contents/Futsal.vue'
 import Lol from '@/components/contents/Lol.vue'
-import Home2 from '@/components/futsal/Home2.vue'
 import StudentFindSome from  '@/components/admin/StudentFindSome.vue'
 import StudentFindId from  '@/components/admin/StudentFindId.vue'
 import MyKakaoLogin from  '@/components/auth/MyKakaoLogin.vue'
+import FutsalHome from '@/components/futsal/FutsalHome.vue'
+import FutsalMatch from '@/components/futsal/MatchPage.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -46,9 +47,10 @@ export default new Router({
           {path:'/write', name:'write', component: Write},
           {path:'/futsal', name:'futsal', component:  Futsal},
           {path:'/lol', name:'lol', component: Lol},
-          {path:'/home2', name:'home2', component: Home2},
           {path:'/remove', name:'remove', component:  Remove},
           {path:'/mykakaologin', name:'mykakaologin', component:  MyKakaoLogin},
+          {path: '/futsalhome', name: 'futsalhome', component: FutsalHome},
+		{path: '/futsalhome/match', name: 'futsalmatch', component: FutsalMatch}
           
      ]    
 })

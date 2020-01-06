@@ -1,10 +1,14 @@
 <template>
-<div style="display: grid; grid-template-columns: 11% 11% 11% 11% 11% 11% 11% 11% 11% ;border: solid 1px;">
-  <div v-for="(time,index) in timeArray(now,selectIndex)" :key="index">
-    <!-- <v-btn rounded @click="tableChange(time)" style="float: left">{{timeToDateAndWeek(time)}}</v-btn> -->
-    <button @click="tableChange(index,time)" :class="selected(time==selectTime)">{{timeToDateAndWeek(time)}}</button>    
+<v-card :style="pageNation" justify="center" elevation="20">
+  <div style="margin: auto;" v-for="(time,index) in timeArray(now,selectIndex)" :key="index">
+    <v-btn max-width="120" max-height="80" min-height="50" min-width="70"  
+      rounded :color="selected(time,selectTime)" @click="tableChange(index,time)">
+      {{timeToDateAndWeek(time)}}
+    </v-btn>
+    <!-- boot strap
+    <button @click="tableChange(index,time)" :class="selected(time,selectTime)">{{timeToDateAndWeek(time)}}</button> -->    
   </div>
-</div>
+</v-card>  
 </template>
 <script>
 export default {
@@ -12,32 +16,43 @@ export default {
     return {
       now : Date.now(),
       selectIndex : 0,
-      selectTime : Date.now()
+      selectTime : Date.now(),
+      blockSize : 8
+    }
+  },
+  computed:{
+    pageNation(){
+      return `display: grid; grid-template-columns: repeat(${this.blockSize}, ${100/this.blockSize}%); height: 100%;`
     }
   },
   methods: {
     timeArray(now,select){
-      return ((i,j) => Array.from({length : 9},
-      (_,k) => i + (j+k)*(1000*3600*24)
-      ))(now,((select > 5) ? 5 : select))
+      const start = (select > 14-this.blockSize ? 14-this.blockSize : 
+        (select==0 ? select : select - 1))
+      const utc = (parseInt(now/3600/1000/24)*24 +
+        (new Date(now).getHours() >= 9 ? -9 : 15) )*3600*1000
+      return Array.from({length : this.blockSize},
+      (_,k) => (start == 0 && k == 0 ? now : utc + (start+k)*24*1000*3600) )
     },
     timeToDateAndWeek(time){
       const temp = new Date(time)
-      return `${temp.getDate()} ${["일","월","화","수","목","금","토"][temp.getDay()]}`
+      const date = temp.getDate()
+      return `${(date==1 ? temp.getMonth()+1: '')} ${date} ${["일","월","화","수","목","금","토"][temp.getDay()]}`
     },
     tableChange(index,time){
       this.selectTime = time
       this.selectIndex = index
       this.$emit("send",time)
     },
-    selected(decide){
-      return "vspButton " + (decide ? "selected" : "")
+    selected(time,selectTime){
+      //return "vspButton " + (time == selectTime ? "selected" : "") bootstrap
+      return (time == selectTime ? "#319bde" : "#a5cae8")
     }
   }
 }
 </script>
 <style scoped>
-.vspButton {
+/* .vspButton {
   max-width: 100px;
   min-width: 80px;
   height: 50px;
@@ -60,7 +75,7 @@ export default {
   border: 1px solid;
   border-radius: 4px;
   background-color: transparent;
-}
+}*/
 .selected{
   background-color: #31b0d5;
 }

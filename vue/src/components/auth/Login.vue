@@ -1,23 +1,60 @@
 <template>
+<div id="app">
+  <v-app id="inspire">
+    <v-content>
+      <v-container fluid>
+        <v-layout justify-center>
+          <v-flex md5>
+            <v-card class="elevation-12">
+              <v-toolbar color="primary" dark flat>
+                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-tooltip bottom>
+                </v-tooltip>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      icon
+                      large
+                      href="https://codepen.io/johnjleider/pen/pMvGQO"
+                      target="_blank"
+                      v-on="on"
+                    >
+                      <v-icon>mdi-codepen</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Codepen</span>
+                </v-tooltip>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field
+                    label="ID"
+                    name="id"
+                    prepend-icon=""
+                    type="text"
+                  ></v-text-field>
 
-  <v-row justify="center">
-    <v-dialog v-model="dialog" width="500" height="1000" >
-      <template v-slot:activator="{on}">
-        <v-btn color="primary" dark v-on="on">로그인</v-btn>
-      </template>
-      <v-card >
-        <v-card-title class="headline">로그인</v-card-title>
-        <v-card-text>ship homepage에 오신 것을 환영합니다</v-card-text>
-        <v-text-field  style="width:200px;" label="ID를 입력해주세요 "  hide-details="auto" v-model="userid"></v-text-field>
-        <v-text-field label="PW를 입력해주세요" v-model="passwd"></v-text-field>
-        <v-card-actions >
-          <v-spacer></v-spacer>
-          <v-btn color="green" text @click="login()">LOGIN</v-btn>
-          <v-btn color="warning" text @click="dialog= false">cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-row>
+                  <v-text-field
+                    id="password"
+                    label="PASSWORD"
+                    name="password"
+                    prepend-icon=""
+                    type="password"
+                  ></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary">Login</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
+</div>
 
 </template>
 <script>

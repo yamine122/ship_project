@@ -1,9 +1,9 @@
 <template>
-<div style="display: grid; grid-template-rows: 35% 5% 10% 50%; border: solid 1px; height: 1000px;">
+<div style="display: grid; grid-template-rows: 35% 5% 7% 50%; border: solid 1px; height: 100vh;">
   <Header></Header>
-  <searchBar @send="setStadium"></searchBar>
-  <reservation @send="setTime"></reservation>
-  <reservationTable :time="time" :stadium="stadium" ></reservationTable>
+  <searchBar class="table" @send="setStadium"></searchBar>
+  <reservation class="table"  @send="setTime"></reservation>
+  <reservationTable class="table"  :proptime="time" :propstadium="stadium" ></reservationTable>
 </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   data(){
     return{
       stadium : '',
-      time : 0
+      time : Date.now()
     }
   },
   methods:{
@@ -32,8 +32,8 @@ export default {
 </script>
 <style scoped>
 .table{
-	padding: 2px;
-}
-div{
+	
+	
+	padding: 3px;
 }
 </style>
