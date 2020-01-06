@@ -11,13 +11,27 @@
    </section>
    <footer id="footer">
    <div class="container">
-        <p class="text-muted">footer page</p>
+   <v-footer style="justify-content:center">
+     <div v-for="f of footer" :key="f.text"  >
+     <h3 style="margin-right:50px">{{f.text}}</h3>
+     <a>{{f.title}}</a>
+     </div>
+   </v-footer>
       </div>
    </footer>
 </div>
 </template>
 <script>
-export default{
+export default {
+     data(){
+          return{
+               footer:[
+                    {text:'매치', title:'전체 매치'},
+                    {text:'서비스 지역 ', title:'서울'},
+                    {text:'소셜 미디어', title:'인스타그램'}
+               ]
+          }
+     }
 }
 </script>
 <style scoped>

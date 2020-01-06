@@ -9,12 +9,17 @@
         <v-icon style="margin-left:230px" large color="blue darken-2">mdi-anchor</v-icon>
         <v-toolbar-title @click="home()"> Ship </v-toolbar-title>
         <v-spacer></v-spacer>
-          <v-toolbar-items style="margin-right:220px">
-            <v-btn text @click="join()">JOIN</v-btn>
-            <v-btn text @click="login()">LOGIN</v-btn>
+          <v-toolbar-items style="margin-right:325px">
+            <v-btn text @click="mypage()">MY PAGE</v-btn>
             <v-btn text @click="logout()">LOGOUT</v-btn>
             <v-btn text @click="lol()">LOL</v-btn>
             <v-btn text @click="futsal()">FUTSAL</v-btn>
+            <v-row style="margin-left:5px; margin-top:12px">
+            <join></join>
+            </v-row>
+            <v-row style="margin-left:100px ; margin-top:12px">
+            <login></login>
+            </v-row>
           </v-toolbar-items>
   
         <!-- <template v-if="$vuetify.breakpoint.smAndUp" >
@@ -80,11 +85,13 @@
 
 <script>
 // import mdiAccount from '@mdi/js'
+import Login  from '@/components/auth/Login.vue'
+import Join  from '@/components/auth/Join.vue'
 import Layout from '@/components/cmm/Layout.vue'
 import {store} from '@/store'
 export default {
   components:{
-    Layout
+    Layout, Login, Join
   },
   data(){
    return{
@@ -104,15 +111,9 @@ export default {
     home(){
       this.$router.push({path:'/'})
     },
-    login(){
-      this.$router.push({path:'/login'})
-    },
     logout(){
       this.state.person={}
       this.$router.push({path:'/'})
-    },
-    join(){
-      this.$router.push({path:'/join'})
     },
     mypage(){
       this.$router.push({path:'/mypage'})
@@ -131,4 +132,7 @@ export default {
 </script>
 <style scoped>
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+.v-application--wrap {
+  height:fit-content;
+}
 </style>

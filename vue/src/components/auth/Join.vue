@@ -1,65 +1,39 @@
 <template>
+<div id="app">
+  <v-btn color="blue" dark fixed center @click="dialog = !dialog"> join </v-btn>
+    <v-dialog v-model="dialog" width="400px">
+      <v-card>
+        <v-card-title class="blue darken-2" font-color="white"> CREATE ACCOUNT </v-card-title>
+        
+        <v-container fluid >
+          <v-layout wrap >
+            <v-flex xs12  >
+                <v-text-field center prepend-icon="people" v-model="userid" placeholder="ID"></v-text-field>
+                <v-text-field prepend-icon="lock" placeholder="PASSWORD" v-model="passwd"></v-text-field>
+                <v-text-field prepend-icon="" placeholder="Name"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+                <v-text-field prepend-icon="business" placeholder="Job"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+                <v-text-field prepend-icon="email" placeholder="Email"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field type="date" prepend-icon="settings" placeholder="birthday"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field prepend-icon="notes" placeholder="Notes"></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-container>
 
-<div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal">회원가입</button>
-    <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-     
-            <h3>회원가입</h3>
-                <article class="card-body mx-auto" style="max-width: 400px;">
-                <div class="col">
-                    <input v-model="userid" class="form-control" placeholder="아이디" type="text">
-                </div> <!-- form-group// -->
-                <br />
-                <div class="col">
-                    <input v-model="passwd" class="form-control" placeholder="비밀번호" type="text">
-                </div> <!-- form-group// -->
-                <br />
-                <div class="col">
-                    <input v-model="name" class="form-control" placeholder="이름" type="text">
-                </div> <!-- form-group// -->
-                <br />
-                <div class="col">
-                    <input v-model="birthday" class="form-control" placeholder="생일" type="text">
-                </div> <!-- form-group// -->   
-                <br />
-                <div class="col">
-                    <input v-model="gender" class="form-control" placeholder="성" type="text">
-                </div> <!-- form-group// -->  
-                <br /> 
-                <div class="col">
-                    <input v-model="hak" class="form-control" placeholder="학년" type="text">
-                </div> <!-- form-group// -->  
-                <br /> 
-                <div class="col">
-                    <input v-model="ban" class="form-control" placeholder="반" type="text">
-                </div> <!-- form-group// -->   
-                <br />
-                <div class="col">
-                    <input v-model="score" class="form-control" placeholder="점수" type="text">
-                </div> <!-- form-group// --> 
-                <br />  
-
-                <div class="col" >
-                    <select v-model="role" class="form-control" placeholder="role" aria-expanded="true">
-                            <option ><li>선생님</li></option>
-                            <option >학생</option>
-                    </select>
-                </div>
-
-                <br />
-                <div class="col">
-                    <button type="submit" class="btn btn-primary btn-block" @click.prevent="join"> 계정 만들기  </button>
-                </div> <!-- form-group// -->      
-                <br />
-
-                <p class="text-center"><router-link to="/login">이미 계정이 있다면? 로그인  </router-link></p>                                                                 
-                </article>
-            </div>
-        </div>
-    </div>
-    
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn text color="primary" @click="dialog = false">Save</v-btn>
+          <v-btn text color="red" @click="dialog = false">Cancel</v-btn>
+        </v-card-actions>
+    </v-card>
+  </v-dialog>
 </div>
 </template>
 <script>
@@ -68,6 +42,7 @@ export default {
     name: 'join',
     data () {
 		return {
+            dialog:false
 		}
     },
     methods:{
@@ -77,42 +52,4 @@ export default {
 
 <style scoped>
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
-.col{
-    width:300px;
-}
-div{
-    text-align: -webkit-center;
-    
-    
-}
-.divider-text {
-    position: relative;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-.divider-text span {
-    padding: 7px;
-    font-size: 12px;
-    position: relative;   
-    z-index: 2;
-}
-.divider-text:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
-}
-
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
-}
 </style>

@@ -1,59 +1,27 @@
 <template>
 <div id="app">
-  <v-app id="inspire">
-    <v-content>
-      <v-container fluid>
-        <v-layout justify-center>
-          <v-flex md5>
-            <v-card class="elevation-12">
-              <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Login form</v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-tooltip bottom>
-                </v-tooltip>
-                <v-tooltip right>
-                  <template v-slot:activator="{ on }">
-                    <v-btn
-                      icon
-                      large
-                      href="https://codepen.io/johnjleider/pen/pMvGQO"
-                      target="_blank"
-                      v-on="on"
-                    >
-                      <v-icon>mdi-codepen</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Codepen</span>
-                </v-tooltip>
-              </v-toolbar>
-              <v-card-text>
-                <v-form>
-                  <v-text-field
-                    label="ID"
-                    name="id"
-                    prepend-icon=""
-                    type="text"
-                  ></v-text-field>
+  <v-btn color="blue" dark fixed center @click="dialog = !dialog"> login </v-btn>
+    <v-dialog v-model="dialog" width="400px">
+      <v-card>
+        <v-card-title class="blue darken-2" font-color="white"> LOGIN </v-card-title>
+        
+        <v-container fluid >
+          <v-layout wrap >
+            <v-flex xs8  >
+              <v-text-field center prepend-icon="people" v-model="userid" placeholder="ID"></v-text-field>
+              <v-text-field prepend-icon="lock" placeholder="PASSWORD" v-model="passwd"></v-text-field>
+            </v-flex>
+            
+          </v-layout>
+        </v-container>
 
-                  <v-text-field
-                    id="password"
-                    label="PASSWORD"
-                    name="password"
-                    prepend-icon=""
-                    type="password"
-                  ></v-text-field>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary">Login</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text color="primary" @click="login()">LOGIN</v-btn>
+        <v-btn text color="red" @click="dialog = false">CANCEL</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </div>
 
 </template>
@@ -114,4 +82,7 @@ export default {
 }
 </script>
 <style scoped>
+.layout {
+  justify-content:center;
+}
 </style>
