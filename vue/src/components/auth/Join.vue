@@ -1,38 +1,54 @@
 <template>
 <div id="app">
   <v-btn color="blue" dark fixed center @click="dialog = !dialog"> join </v-btn>
-    <v-dialog v-model="dialog" width="400px">
+    <v-dialog v-model="dialog" width="800px">
       <v-card>
-        <v-card-title class="blue darken-2" font-color="white"> CREATE ACCOUNT </v-card-title>
+        <v-card-title class="blue darken-2" style="font-color:white" > CREATE ACCOUNT </v-card-title>
         
-        <v-container fluid >
-          <v-layout wrap >
-            <v-flex xs12  >
-                <v-text-field v-validate="'required|max:10'" :counter="10" required
-                center prepend-icon="people" v-model="userid" placeholder="ID"></v-text-field>
-                <v-text-field prepend-icon="lock" placeholder="PASSWORD" v-model="passwd"></v-text-field>
-                <v-text-field prepend-icon="" placeholder="Name"></v-text-field>
+  <v-container>   
+    <v-layout justify-center >
+      <v-flex xs20 md10>
+        
+          <v-form>
+            <v-container >
+              <v-layout wrap>
+
+                <v-flex xs12 sm6 style="padding:0px;">
+                <v-text-field style="margin:0px;" v-validate="'required|max:10'" :counter="10" required
+                center v-model="userid" label="ID" ></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 md7 style="padding:0px;">
+                <v-text-field style="margin:0px;" label="PASSWORD" v-model="passwd"></v-text-field>
+                </v-flex>
+
+                <v-flex xs12 md6 style="padding:0px;">
+                <v-text-field style="margin:0px;" label="NAME" class="purple-input"></v-text-field>
+                </v-flex>
+
+            <v-flex xs12 style="padding:0px;">
+                <v-text-field style="margin:0px;" label="JOB"></v-text-field>
             </v-flex>
-            <v-flex xs12>
-                <v-text-field prepend-icon="business" placeholder="Job"></v-text-field>
+
+            <v-flex xs12 style="padding:0px;">
+              <v-text-field style="margin:0px;" type="date" label="BIRTHDAY" placeholder="1">
+              </v-text-field>
             </v-flex>
-            <v-flex xs12>
-                <v-text-field prepend-icon="email" placeholder="Email"></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field type="date" prepend-icon="settings" placeholder="birthday"></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field prepend-icon="notes" placeholder="Notes"></v-text-field>
-            </v-flex>
-          </v-layout>
-        </v-container>
+
+              </v-layout>
+            </v-container>
+          </v-form>
+        
+      </v-flex>
+    </v-layout>
+  </v-container>
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text color="primary" @click="dialog = false">Submit</v-btn>
-          <v-btn text color="red" @click="dialog = false">Cancel</v-btn>
+          <v-btn text color="error" @click="dialog = false">Cancel</v-btn>
         </v-card-actions>
+
     </v-card>
   </v-dialog>
 </div>
@@ -76,4 +92,10 @@ export default {
 
 <style scoped>
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+.theme--light.v-card{
+  color:white;
+}
+div.flex{
+  
+}
 </style>

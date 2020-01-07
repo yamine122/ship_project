@@ -41,7 +41,7 @@ export default {
      min-width:1200px;
 }
 header {
-     height: 66px;
+     height: 64px;
 }
 #content {
      /* margin: 0 auto; */

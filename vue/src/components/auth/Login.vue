@@ -68,7 +68,7 @@ export default {
                     this.state.authCheck = false
                 }
                 this.dialog=false
-                this.$router.push({path:'/mypage'})
+                this.$router.push({path:'/'})
             }else{
                 alert(`로그인 실패`)
                 this.$router.go({path: '/login'})
@@ -85,5 +85,8 @@ export default {
 <style scoped>
 .layout {
   justify-content:center;
+}
+.theme--light.v-card{
+  color:white;
 }
 </style>

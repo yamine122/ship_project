@@ -6,16 +6,18 @@
   <!-- --------------------------------------- 네비 ------------------------------------------ -->
       <div>
         <v-toolbar color="#3F51B5">
-          <v-toolbar-title class="white--text" style="margin-left:230px" @click="home()"> 
-            <v-icon large color="white">mdi-anchor</v-icon>
+          <v-toolbar-title class="white--text" style="margin-left:230px;" @click="home()" > 
+            <v-icon large color="white">mdi-vuetify</v-icon>
+            
               SHIP 
           </v-toolbar-title>
         <v-spacer></v-spacer>
-          <v-toolbar-items style="margin-right:325px">
-            <v-btn text class="white--text" @click="mypage()">MY PAGE</v-btn>
-            <v-btn text class="white--text" @click="logout()">LOGOUT</v-btn>
-            <v-btn text class="white--text" @click="lol()">LOL</v-btn>
-            <v-btn text class="white--text" @click="futsal()">FUTSAL</v-btn>
+          <v-toolbar-items style="margin-right:325px;">
+            <v-btn text style="font-size:15px" class="white--text" @click="mypage()"   >MY PAGE</v-btn>
+            <v-btn text style="font-size:15px" class="white--text" @click="logout()">LOGOUT</v-btn>
+            <v-btn text style="font-size:15px" class="white--text" @click="lol()">LOL</v-btn>
+            <v-btn text style="font-size:15px" class="white--text" @click="futsal()">FUTSAL</v-btn>
+
             <!-- <v-col class="d-flex" cols="6" sm="4">
               <v-select :items="items" label="CONTENTS" class="white--text"></v-select>
             </v-col> -->
@@ -100,7 +102,6 @@ export default {
   },
   data(){
    return{
-    //  icons: {mdiAccount},
       sides: [
           { title: 'Home', icon: 'mdi-home' },
           { title: 'My Account', icon: 'mdi-account' },

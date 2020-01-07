@@ -15,14 +15,11 @@ export default {
  data () {
     return {
       items: [
-        {
-          src: 'https://www.tff.org/Resources/TFF/FileGallery/4cc681f05905465286110736d23b27c1.jpg', link:'/futsal'
+        {link:'/futsal',
+          src: 'https://www.tff.org/Resources/TFF/FileGallery/4cc681f05905465286110736d23b27c1.jpg'
         },
         {link:'/lol',
-          src: 'https://cdn.guidingtech.com/imager/media/assets/196282/Best-League-of-Legends-Wallpapers-1_935adec67b324b146ff212ec4c69054f.png?1526290830',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+          src: 'http://i.imgur.com/bv9OYJ7.jpg',
         },
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
