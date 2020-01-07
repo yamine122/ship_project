@@ -15,6 +15,7 @@
      <div v-for="f of footer" :key="f.text"  >
      <h3 style="margin-right:50px">{{f.text}}</h3>
      <a>{{f.title}}</a>
+     
      </div>
    </v-footer>
       </div>
@@ -56,8 +57,6 @@ header {
 } */
 footer {
      /* clear: both; */
-     /* height: 60px;
-     padding: 0 15px; */
 }
 /* 가로폭 980보다 작을 때 사용할 @media query */
 @media screen and (max-width: 980px) {     
@@ -80,17 +79,4 @@ footer {
            padding: 1% 4%;
      }
 }
-/* 공통 */
-#content {
-}
-#sidebar {
-}
-
-header, #content, #middle, #sidebar{
-     /* margin-bottom: 5px; */
-}
-#pagewrap, #content, #middle, #sidebar {
-     /* border: solid 1px #ccc; */
-}
-
 </style>
