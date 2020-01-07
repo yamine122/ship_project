@@ -37,8 +37,8 @@ export default {
 </script>
 <style scoped>
 #wrapper {
-     width: 1900px;
      text-align: -webkit-center;
+     min-width:1200px;
 }
 header {
      height: 66px;

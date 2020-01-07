@@ -67,6 +67,7 @@ export default {
                 }else{
                     this.state.authCheck = false
                 }
+                this.dialog=false
                 this.$router.push({path:'/mypage'})
             }else{
                 alert(`로그인 실패`)

@@ -3,10 +3,11 @@ import Router from 'vue-router'
 import PreSidebar from '@/components/cmm/PreSidebar.vue'
 import AdminSidebar from  '@/components/cmm/AdminSidebar.vue'
 import StudentSidebar from  '@/components/cmm/StudentSidebar.vue'
-import Layout from '@/components/cmm/Layout.vue'
+import Carousel from  '@/components/cmm/Carousel.vue'
 import Join from '@/components/auth/Join.vue'
 import Login from '@/components/auth/Login.vue'
 import Admin from '@/components/admin/Admin.vue'
+import Register from '@/components/admin/Register.vue'
 import MyPage from '@/components/auth/MyPage.vue'
 import FutsalMypage from  '@/components/member/FutsalMypage.vue'
 import StudentList from  '@/components/member/StudentList.vue'
@@ -29,7 +30,6 @@ Vue.use(Router)
 export default new Router({
      mode: 'history',
      routes: [
-          {path:'/layout', name:'layout', component:  Layout},
           {path:'/presidebar', name:'presidebar',  component: PreSidebar},
           {path:'/adminsidebar', name:'adminsidebar',  component: AdminSidebar},
           {path:'/studentsidebar', name:'studentsidebar',  component: StudentSidebar},
@@ -52,7 +52,9 @@ export default new Router({
           {path:'/mykakaologin', name:'mykakaologin', component:  MyKakaoLogin},
           {path: '/futsalhome', name: 'futsalhome', component: FutsalHome},
 		{path: '/futsalhome/match', name: 'futsalmatch', component: FutsalMatch},
-		{path: '/joinroom', name: 'joinroom', component: JoinRoom}
+		{path: '/joinroom', name: 'joinroom', component: JoinRoom},
+		{path: '/register', name: 'register', component: Register},
+		{path: '/', name: 'carousel', component: Carousel}
           
      ]    
 })

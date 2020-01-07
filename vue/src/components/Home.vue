@@ -2,9 +2,9 @@
 <div id="app">
 <layout>
    <template #header="h" >
-    <v-app id="inspire" >
+    <v-app id="inspire">
   <!-- --------------------------------------- 네비 ------------------------------------------ -->
-      <div >
+      <div>
         <v-toolbar color="#3F51B5">
           <v-toolbar-title class="white--text" style="margin-left:230px" @click="home()"> 
             <v-icon large color="white">mdi-anchor</v-icon>
@@ -45,8 +45,8 @@
 <template #content ="c">
   <div id="app" style="width:1400px; height:730px" >
     <v-app id="inspire">
-        <v-card height="700px">
-          <v-navigation-drawer absolute temperate left width="20%">
+        <v-card height="700px"  >
+          <v-navigation-drawer absolute temperate left width="20%" >
       <template v-slot:prepend>
               <v-list-item two-line>
               <v-list-item-avatar>
@@ -60,12 +60,13 @@
       </template>
         <v-divider></v-divider>
           <v-list dense>
-            <v-list-item v-for="side of sides" :key="side.title" @click="sidego(side.title)">
+            <v-list-item v-for="side of sides" :key="side.title" @click="sidego(side.link)">
                 <v-list-item-icon>
                   <v-icon>{{ side.icon }}</v-icon>
                 </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>{{ side.title }}</v-list-item-title>
+                <router-link :to="side.link"></router-link>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -73,6 +74,7 @@
       <!-- ----------------------------------------컨텐츠------------------------------------------ -->
         <v-navigation-drawer absolute right width="80%" height="auto" >
           <template>
+
             <router-view></router-view>
           </template>
         </v-navigation-drawer>
@@ -103,12 +105,12 @@ export default {
           { title: 'Home', icon: 'mdi-home' },
           { title: 'My Account', icon: 'mdi-account' },
           { title: 'Users', icon: 'mdi-account-group-outline' },
-          { title: '풋살 관리', icon: 'mdi-account-group-outline' },
+          { title: '구장 등록', icon: 'mdi-account-group-outline', link:'/register' },
           { title: '신고게시판', icon: 'mdi-account-group-outline' },
           { title: '수익 관리', icon: 'mdi-account-group-outline' },
         ],
       state:store.state,
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz']
+      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
       }
   },
   methods:{
@@ -122,6 +124,9 @@ export default {
     mypage(){
       this.$router.push({path:'/mypage'})
     },
+    admin(){
+      this.$router.push({path:'/admin'})
+    },
     lol(){
       this.$router.push({path:'/lol'})
     },
@@ -129,7 +134,7 @@ export default {
       this.$router.push({path:'/futsal'})
     },
     sidego(x){
-      alert(`${x}`)
+      this.$router.push({path:`${x}`})
     }
   }
 }
