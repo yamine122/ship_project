@@ -1,39 +1,67 @@
 <template>
 <div id="app">
   <v-btn color="blue" dark fixed center @click="dialog = !dialog"> join </v-btn>
-    <v-dialog v-model="dialog" width="800px">
+    <v-dialog v-model="dialog" width="550px">
       <v-card>
         <v-card-title class="blue darken-2" style="font-color:white" > CREATE ACCOUNT </v-card-title>
         
   <v-container>   
     <v-layout justify-center >
-      <v-flex xs20 md10>
+      <v-flex >
         
           <v-form>
             <v-container >
-              <v-layout wrap>
+              <v-layout wrap justify-center>
 
-                <v-flex xs12 sm6 style="padding:0px;">
+                <v-flex  md8 style="padding:0px;">
                 <v-text-field style="margin:0px;" v-validate="'required|max:10'" :counter="10" required
                 center v-model="userid" label="ID" ></v-text-field>
                 </v-flex>
 
-                <v-flex xs12 md7 style="padding:0px;">
-                <v-text-field style="margin:0px;" label="PASSWORD" v-model="passwd"></v-text-field>
+                <v-flex xs8 md8 style="padding:0px;">
+                <v-text-field type="password" style="margin:0px;" label="PASSWORD" v-model="passwd"></v-text-field>
                 </v-flex>
 
-                <v-flex xs12 md6 style="padding:0px;">
+                <v-flex xs8 md8 style="padding:0px;">
                 <v-text-field style="margin:0px;" label="NAME" class="purple-input"></v-text-field>
                 </v-flex>
 
-            <v-flex xs12 style="padding:0px;">
+            <v-flex xs8 md8 style="padding:0px;">
                 <v-text-field style="margin:0px;" label="JOB"></v-text-field>
             </v-flex>
 
-            <v-flex xs12 style="padding:0px;">
-              <v-text-field style="margin:0px;" type="date" label="BIRTHDAY" placeholder="1">
-              </v-text-field>
+            <v-flex xs8 md8 style="padding:0px;" >
+              <v-menu ref="startMenu" :close-on-content-click="false" offset-y
+                :return-value.sync="trip.start" min-width="290px">
+                <template v-slot:activator="{ on }">
+                  <v-text-field v-model="trip.start" label="BIRTHDAY" 
+                  readonly v-on="on"></v-text-field>
+                </template>
+                <v-date-picker v-model="date" no-title scrollable>
+                  <v-spacer></v-spacer>
+                  <v-btn text color="primary" @click="$refs.startMenu.save(date)">
+                    OK</v-btn>
+                  <v-btn text color="primary" @click="$refs.startMenu.isActive = false">
+                    Cancel</v-btn>
+                </v-date-picker>
+              </v-menu>
             </v-flex>
+
+          <v-flex xs8 md8>
+            <v-select
+                    :items="['0-17', '18-29', '30-54', '54+']"
+                    label="AGE"
+                    required
+            ></v-select>
+          </v-flex>
+
+          <v-flex xs8 md8> 
+             <v-autocomplete
+                    :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                    label="INTERESTS"
+                    multiple
+            ></v-autocomplete>
+          </v-flex>
 
               </v-layout>
             </v-container>
@@ -57,7 +85,14 @@
 export default {
     name: 'join',
     data () {
-		return {
+      return {
+         date: null,
+      trip: {
+      name: '',
+      location: null,
+      start: null,
+      end: null,
+    },
     dialog:false,
     name: '',
     email: '',

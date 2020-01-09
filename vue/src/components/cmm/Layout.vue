@@ -1,25 +1,40 @@
 <template>
 <div id="wrapper">
      <header id="header">
-   <slot name="header" :title="header"></slot>
-   </header>
-   <aside id="sidebar">
-   <slot name="sidebar"></slot>
-   </aside>
-   <section id="content">
-   <slot name="content" :content="content"></slot>
-   </section>
-   <footer id="footer">
-   <div class="container">
-   <v-footer style="justify-content:center">
-     <div v-for="f of footer" :key="f.text"  >
-     <h3 style="margin-right:50px">{{f.text}}</h3>
-     <a>{{f.title}}</a>
-     
-     </div>
-   </v-footer>
-      </div>
-   </footer>
+          <slot name="header" :title="header"></slot>
+     </header>
+     <section id="content">
+          <slot name="content" :content="content"></slot>
+     </section>
+     <footer id="footer">
+          <v-footer dark padless >
+               <v-card flat tile class="flex" style="width:1982px">
+                    <v-card-title style="place-content:center" >
+                         <strong class="mt-1">푸터 타이틀</strong>
+                    </v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text class="">
+                         <v-btn v-for="icon of icons" :key="icon" class="mx-4 white--text" icon>
+                              <v-icon size="24px">{{ icon }}</v-icon>
+                         </v-btn>
+                    </v-card-text>
+                    <v-card-text class=" white--text py-2" >
+                         <v-row no-gutters> 
+                              <v-col>
+                                   <strong> 푸터 텍스트</strong>
+                              </v-col>
+                              <v-col>
+                                   <strong> 푸터 텍스트2</strong>
+                              </v-col>
+                         </v-row>
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-text class="white--text">
+                         {{ new Date().getFullYear() }} — <strong>SHIP</strong>
+                    </v-card-text>
+               </v-card>
+          </v-footer>
+     </footer>
 </div>
 </template>
 <script>
@@ -30,7 +45,13 @@ export default {
                     {text:'매치', title:'전체 매치'},
                     {text:'서비스 지역 ', title:'서울'},
                     {text:'소셜 미디어', title:'인스타그램'}
-               ]
+               ],
+                icons: [
+                         'mdi-facebook-box',
+                         'mdi-twitter',
+                         'mdi-google-plus',
+                         'mdi-instagram',
+    ]
           }
      }
 }

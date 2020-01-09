@@ -1,12 +1,10 @@
 <template>
-<div id="app" >
-  <v-app id="inspire"  >
+<div id="app" style="height:700px">
     <v-carousel cycle height="700px">
       <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"
         reverse-transition="fade-transition" transition="fade-transition" @click="carougo(item.link)">
         </v-carousel-item>
     </v-carousel>
-  </v-app>
 </div>
 </template>
 

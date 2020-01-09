@@ -1,15 +1,14 @@
 <template>
 <div id="app">
-  <v-btn color="blue" dark fixed center @click="dialog = !dialog"> login </v-btn>
-    <v-dialog v-model="dialog" width="400px">
-      <v-card>
-        <v-card-title class="blue darken-2" font-color="white"> LOGIN </v-card-title>
-        
-        <v-container fluid >
-          <v-layout wrap >
+  <v-btn color="blue" dark fixed center @click="dialog = !dialog"  > login </v-btn>
+    <v-dialog v-model="dialog" width="400px" >
+      <v-card >
+        <v-card-title class="blue darken-2" font-color="white" > LOGIN </v-card-title>
+        <v-container fluid  >
+          <v-layout wrap  >
             <v-flex xs8  >
-              <v-text-field center prepend-icon="people" v-model="userid" placeholder="ID"></v-text-field>
-              <v-text-field prepend-icon="lock" placeholder="PASSWORD" v-model="passwd"></v-text-field>
+              <v-text-field center prepend-icon="people" v-model="userid" label="ID" required></v-text-field>
+              <v-text-field prepend-icon="lock" label="PASSWORD" type="password" v-model="passwd"></v-text-field>
             </v-flex>
             
           </v-layout>
@@ -17,8 +16,8 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" @click="login()">LOGIN</v-btn>
-        <v-btn text color="red" @click="dialog = false">CANCEL</v-btn>
+        <v-btn outlined color="primary" @click="login()">LOGIN</v-btn>
+        <v-btn outlined color="red" @click="dialog = false">CANCEL</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -29,6 +28,8 @@
 import axios from 'axios'
 import {store} from '../../store'
 export default {
+  components:{
+  },
    data(){
       return {
         context : 'http://localhost:8080',
