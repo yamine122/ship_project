@@ -9,10 +9,10 @@
      <footer id="footer">
           <v-footer dark padless >
                <v-card flat tile class="flex" style="width:1982px">
-                    <v-card-title style="place-content:center" >
+                    <!-- <v-card-title style="place-content:center" >
                          <strong class="mt-1">푸터 타이틀</strong>
-                    </v-card-title>
-                    <v-divider></v-divider>
+                    </v-card-title> -->
+                    <!-- <v-divider></v-divider> -->
                     <v-card-text class="">
                          <v-btn v-for="icon of icons" :key="icon" class="mx-4 white--text" icon>
                               <v-icon size="24px">{{ icon }}</v-icon>

@@ -7,7 +7,7 @@
      
       <v-radio-group v-model="row" :mandatory="false">
         <v-radio label="개인/2인랭크" value="rank" ></v-radio>
-        <v-radio @click="tests(link)" label="칼바람나락" value="radio-2"></v-radio>
+        <v-radio @click="kal(link)" label="칼바람나락" value="radio-2"></v-radio>
       </v-radio-group>
     </v-container>
    <v-row>
@@ -70,7 +70,7 @@ export default {
       createRoom(){
          this.$router.push({path:'/createRoom'})
       },
-      tests(x){
+      kal(x){
          this.$router.push({path:`${x}`})
       }
    }

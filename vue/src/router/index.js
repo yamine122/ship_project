@@ -22,7 +22,6 @@ import Futsal from '@/components/contents/Futsal.vue'
 import Lol from '@/components/contents/Lol.vue'
 import StudentFindSome from  '@/components/admin/StudentFindSome.vue'
 import StudentFindId from  '@/components/admin/StudentFindId.vue'
-import MyKakaoLogin from  '@/components/auth/MyKakaoLogin.vue'
 import FutsalHome from '@/components/futsal/FutsalHome.vue'
 import FutsalMatch from '@/components/futsal/MatchPage.vue'
 import CreateRoom from '@/components/lol/CreateRoom.vue'
@@ -53,7 +52,6 @@ export default new Router({
           {path:'/futsal', name:'futsal', component:  Futsal},
           {path:'/lol', name:'lol', component: Lol},
           {path:'/remove', name:'remove', component:  Remove},
-          {path:'/mykakaologin', name:'mykakaologin', component:  MyKakaoLogin},
           {path: '/futsalhome', name: 'futsalhome', component: FutsalHome},
           {path: '/futsalhome/match', name: 'futsalmatch', component: FutsalMatch},
           {path: '/createroom', name: 'createroom', component: CreateRoom},

@@ -2,40 +2,61 @@
 <div id="app" >
 <layout>
    <template #header="h" >
-    <v-app id="inspire">
+    <v-app id="inspire" style="height:800;" >
   <!-- --------------------------------------- 네비 ------------------------------------------ -->
-      <div>
-        <v-toolbar color="#3F51B5" :src="'https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg'">
-          <v-toolbar-title class="white--text" style="margin-left:230px;" @click="home()" > 
+      <div >
+        <v-toolbar color="#000000" >
+        <!-- <v-toolbar color="#3F51B5" :src="'https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg'"> -->
+          <v-toolbar-title class="white--text" style="margin-left:240px;" @click="home()" > 
             <v-icon large color="white">mdi-vuetify</v-icon>
               SHIP 
           </v-toolbar-title>
 
         <v-spacer></v-spacer>
-          <v-toolbar-items  style="margin-right:325px;" >
-            <v-btn text style="font-size:15px" class="white--text" @click="test()"   >TEST</v-btn>
-            <v-btn hover text style="font-size:15px" class="white--text" @click="mypage()"   >MY PAGE</v-btn>
-            <v-btn text style="font-size:15px" class="white--text" @click="logout()">LOGOUT</v-btn>
+          <v-toolbar-items  style="margin-right:225px;" >
+            <v-row style="margin-right:85px; margin-top:14px;" v-if="!authCheck">
+              <join></join>
+              </v-row>
+              <v-row v-else>
+              </v-row>
+              <v-row style="margin-right:85px ; margin-top:14px"  v-if="!authCheck">
+                <login></login>
+              </v-row>
+              <v-row style="margin-right:5px ; margin-top:14px" v-else >
+                <v-btn text style="font-size:15px" class="white--text" @click="logout()">LOGOUT</v-btn>
+              </v-row>
+
+            <v-btn text style="font-size:15px;margin-bottom:100px" class="white--text" @click="test()"   >TEST</v-btn>
+
+            
 
             <!-- <v-overflow-btn :items="contents" label="CONTENTS" class="white--text"></v-overflow-btn> -->
 
-            <v-btn text style="font-size:15px" class="white--text" @click="lol()">LOL</v-btn>
             <v-badge :value="hover" color="deep-purple accent-4" left offset-x="100" offset-y="20"
                       content="9999+" transition="slide-x-transition">
               <v-hover v-model="hover">
-                  <v-btn text style="font-size:15px;margin-top:13px" class="white--text" @click="futsal()">FUTSAL</v-btn>
+                  <v-btn text style="font-size:15px;margin-top:13px" class="white--text" @click="mypage()">MY PAGE</v-btn>
               </v-hover>
             </v-badge>
+
+            <div class="text-center">
+
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn style="margin-top:12px;font-size:15px" color="black" v-on="on">  Contents  </v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="(item) of items" :key="item.title" @click="contgo(item.link)">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div >
 
             <!-- <v-col class="d-flex" cols="6" sm="4">
               <v-select :items="items" label="CONTENTS" class="white--text"></v-select>
             </v-col> -->
-            <v-row style="margin-left:5px; margin-top:12px">
-            <join></join>
-            </v-row>
-            <v-row style="margin-left:100px ; margin-top:12px">
-            <login></login>
-            </v-row>
+            
           </v-toolbar-items>
         <!-- <template v-if="$vuetify.breakpoint.smAndUp" >
           <v-btn icon>
@@ -54,10 +75,10 @@
   </template>
    <!-- --------------------- 사이드 바  ------------------------- -->
 <template #content ="c">
-  <div id="app" style="width:1400px;height:700px" >
+  <div id="app" style="width:1400px;height:873px" >
     <v-app id="inspire">
-        <v-card height="700px"  >
-          <v-navigation-drawer absolute temperate left width="20%" >
+        <v-card height="600px"  >
+          <!-- <v-navigation-drawer absolute temperate left width="20%" >
       <template v-slot:prepend>
               <v-list-item two-line>
               <v-list-item-avatar>
@@ -81,9 +102,9 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
-        </v-navigation-drawer>
+        </v-navigation-drawer> -->
       <!-- ----------------------------------------컨텐츠------------------------------------------ -->
-        <v-navigation-drawer absolute right width="80%" height="auto" >
+        <v-navigation-drawer absolute right width="100%" height="873px" >
           <template>
             <router-view></router-view>
           </template>
@@ -110,6 +131,10 @@ export default {
   },
   data(){
    return{
+     items: [
+      { title: 'LOL' ,link:'/lol'},
+      { title: 'FUTSAL', link:'/futsal' },
+    ],
      contents: [
         { text: 'LOL' },
         { text: 'FUTSAL' },
@@ -120,7 +145,6 @@ export default {
           { title: '회원 관리', icon: 'mdi-account-group-outline', link:'/membermanage' },
         ],
       state:store.state,
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
       hover: false,
       }
   },
@@ -130,6 +154,7 @@ export default {
     },
     logout(){
       this.state.person={}
+      this.state.authCheck = false
       this.$router.push({path:'/'})
     },
     mypage(){
@@ -149,11 +174,20 @@ export default {
     },
     sidego(x){
       this.$router.push({path:`${x}`})
-    }
+    },
+    contgo(x){
+      this.$router.push({path:`${x}`})
+    },
+    
+  },
+  computed:{
+    authCheck(){
+      return store.state.authCheck}
   }
 }
 </script>
 <style scoped>
-.v-application--wrap{
+#app{
+  theme:black;
 }
 </style>

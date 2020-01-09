@@ -32,7 +32,7 @@
   <v-content >
     
         <v-flex style="margin-right:5px; margin-top:5px">
-          <v-card color="primary lighten-4">
+          <v-card color="grey lighten-3">
             <v-toolbar dark color="primary darken-1">
               <v-toolbar-title center>채팅</v-toolbar-title>
             </v-toolbar>

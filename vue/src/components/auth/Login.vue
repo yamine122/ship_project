@@ -1,14 +1,15 @@
 <template>
 <div id="app">
-  <v-btn color="blue" dark fixed center @click="dialog = !dialog"  > login </v-btn>
+  <v-btn color="black" dark fixed center @click="dialog = !dialog"  style="font-size:15px" > login </v-btn>
     <v-dialog v-model="dialog" width="400px" >
       <v-card >
-        <v-card-title class="blue darken-2" font-color="white" > LOGIN </v-card-title>
+        <v-card-title class="indigo " font-color="white" > LOGIN </v-card-title>
         <v-container fluid  >
           <v-layout wrap  >
             <v-flex xs8  >
               <v-text-field center prepend-icon="people" v-model="userid" label="ID" required></v-text-field>
               <v-text-field prepend-icon="lock" label="PASSWORD" type="password" v-model="passwd"></v-text-field>
+               <v-rating v-model="rating"></v-rating>
             </v-flex>
             
           </v-layout>
@@ -16,8 +17,8 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn outlined color="primary" @click="login()">LOGIN</v-btn>
-        <v-btn outlined color="red" @click="dialog = false">CANCEL</v-btn>
+        <v-btn text color="primary" @click="login()">LOGIN</v-btn>
+        <v-btn text color="red" @click="dialog = false">CANCEL</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -32,6 +33,7 @@ export default {
   },
    data(){
       return {
+        rating:3,
         context : 'http://localhost:8080',
         result : '',
         userid : '',
@@ -63,7 +65,7 @@ export default {
             if(res.data.result === "SUCCESS"){
                 store.state.person = res.data.person
                 if(this.state.person.role != 'student'){
-                    // this.state.authCheck = true
+                    this.state.authCheck = true
                     this.$router.push({path:'/'})
                 }else{
                     this.state.authCheck = false

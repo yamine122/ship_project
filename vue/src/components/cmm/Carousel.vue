@@ -1,6 +1,6 @@
 <template>
-<div id="app" style="height:700px">
-    <v-carousel cycle height="700px">
+<div id="app" >
+    <v-carousel cycle height="873px">
       <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"
         reverse-transition="fade-transition" transition="fade-transition" @click="carougo(item.link)">
         </v-carousel-item>
