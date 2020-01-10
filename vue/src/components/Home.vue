@@ -5,7 +5,7 @@
     <v-app id="inspire" style="height:800;" >
   <!-- --------------------------------------- 네비 ------------------------------------------ -->
       <div >
-        <v-toolbar color="#000000" >
+        <v-toolbar class="sticky" color="indigo darken-1" >
         <!-- <v-toolbar color="#3F51B5" :src="'https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg'"> -->
           <v-toolbar-title class="white--text" style="margin-left:240px;" @click="home()" > 
             <v-icon large color="white">mdi-vuetify</v-icon>
@@ -14,44 +14,46 @@
 
         <v-spacer></v-spacer>
           <v-toolbar-items  style="margin-right:225px;" >
-            <v-row style="margin-right:85px; margin-top:14px;" v-if="!authCheck">
+
+            <v-row style="margin-right:20px;">
+              <v-badge :value="hover" color="deep-purple accent-4" left offset-x="100" offset-y="20"
+                        content="9999+" transition="slide-x-transition">
+                <v-hover v-model="hover">
+                  <v-btn text style="font-size:15px;margin-top:12px" class="white--text" @click="test()"   >TEST</v-btn>
+                </v-hover>
+              </v-badge>
+            </v-row>
+
+            <v-row style="margin-right:85px; margin-top:12px;" v-if="!authCheck">
               <join></join>
-              </v-row>
-              <v-row v-else>
-              </v-row>
-              <v-row style="margin-right:85px ; margin-top:14px"  v-if="!authCheck">
+            </v-row>
+
+            <v-row v-else>
+              <v-btn text style="font-size:15px;margin-top:12px" class="white--text" @click="mypage()">MY PAGE</v-btn>
+            </v-row>
+
+            <v-row style="margin-right:85px ; margin-top:12px"  v-if="!authCheck">
                 <login></login>
-              </v-row>
-              <v-row style="margin-right:5px ; margin-top:14px" v-else >
+            </v-row>
+
+            <v-row style="margin-right:5px ; margin-top:12px" v-else >
                 <v-btn text style="font-size:15px" class="white--text" @click="logout()">LOGOUT</v-btn>
-              </v-row>
-
-            <v-btn text style="font-size:15px;margin-bottom:100px" class="white--text" @click="test()"   >TEST</v-btn>
-
-            
+            </v-row>
 
             <!-- <v-overflow-btn :items="contents" label="CONTENTS" class="white--text"></v-overflow-btn> -->
 
-            <v-badge :value="hover" color="deep-purple accent-4" left offset-x="100" offset-y="20"
-                      content="9999+" transition="slide-x-transition">
-              <v-hover v-model="hover">
-                  <v-btn text style="font-size:15px;margin-top:13px" class="white--text" @click="mypage()">MY PAGE</v-btn>
-              </v-hover>
-            </v-badge>
-
             <div class="text-center">
-
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn style="margin-top:12px;font-size:15px" color="black" v-on="on">  Contents  </v-btn>
-        </template>
-        <v-list>
-          <v-list-item v-for="(item) of items" :key="item.title" @click="contgo(item.link)">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </div >
+              <v-menu offset-y>
+                <template v-slot:activator="{ on }">
+                  <v-btn style="margin-top:12px;font-size:15px" color="indigo darken-1" v-on="on">  Contents  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-item v-for="(item) of items" :key="item.title" @click="contgo(item.link)">
+                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </div >
 
             <!-- <v-col class="d-flex" cols="6" sm="4">
               <v-select :items="items" label="CONTENTS" class="white--text"></v-select>

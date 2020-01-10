@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <v-btn color="black" dark fixed center @click="dialog = !dialog" style="font-size:15px"> join </v-btn>
+  <v-btn color="indigo darken-1" dark fixed center @click="dialog = !dialog" style="font-size:15px"> join </v-btn>
     <v-dialog v-model="dialog" width="550px">
       <v-card>
         <v-card-title class="red darken-2" style="font-color:white" > CREATE ACCOUNT </v-card-title>
@@ -14,14 +14,14 @@
               <v-layout wrap justify-center>
 
                 <v-flex  md8 style="padding:0px;">
-                <v-text-field style="margin:0px;" v-validate="'required|max:10'" :counter="10" required
+                <v-text-field style="margin:0px;" v-validate="'required|max:10'"  required
                 center v-model="userid" label="ID" :rules="idRules"></v-text-field>
                 </v-flex>
 
                 <v-flex xs8 md8 style="padding:0px;">
                 <v-text-field  style="margin:0px;" label="PASSWORD" v-model="passwd"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" 
-                :type="show1 ? 'text' : 'password'" @click:append="show1 = !show1"></v-text-field>
+                  :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" 
+                  :type="show1 ? 'text' : 'password'" @click:append="show1 = !show1"></v-text-field>
                 </v-flex>
 
                 <v-flex xs8 md8 style="padding:0px;">
@@ -91,12 +91,12 @@ export default {
       show1: false,
       checkbox:false,
       idRules: [
-      v => !!v || '아이디를 입력해주세요',
-      v => v.length <= 10 || '아이디는 10자를 넘을 수 없습니다',
+        v => !!v || '아이디를 입력해주세요',
+        v => v.length <= 10 || '아이디는 10자를 넘을 수 없습니다',
       ],
       emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid',
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
       date: null,
       trip: {

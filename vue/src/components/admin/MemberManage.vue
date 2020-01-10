@@ -1,113 +1,79 @@
 <template>
   <div style="margin:10px;">
   <div class="text-center" style="">
-    <v-sheet color="grey" style="font-size:xx-large">회원 목록 관리 <v-btn style= "float:right;color:red; height:48px" @click="blacklist()">블랙리스트 관리</v-btn></v-sheet>
-    
   </div>
-   <v-card>
-    <v-card-title>
+   <v-card >
+    <v-card-title style="padding-left:250px;color:black;background-color:#B0BEC5">
+    <div><h2 style="font-weight:bold;">회원 목록 관리</h2></div>
+      <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
         append-icon="search"
         label="Search"
         single-line
         hide-details
-        style="width:300px;"
       ></v-text-field>
-    </v-card-title>
+      </v-card-title>
     <v-data-table
       :headers="headers"
       :items="lists"
       :search="search"
+      :page.sync="page"
+      :items-per-page="5"
+      hide-default-footer
+      class="elevation-1"
+      @page-count="pageCount = $event"
     >
     <template v-slot:item.male="{ item }" >
       <v-checkbox v-model="item.male" :label="`${item.male}`"></v-checkbox>
     </template>
+    <template>
+    <v-data-table item-key="name" class="elevation-1" loading loading-text="Loading... Please wait"></v-data-table>
+    </template> 
     </v-data-table>
+    <div class="text-center pt-2">
+      <v-pagination 
+      prev-icon="mdi-arrow-left"
+      next-icon="mdi-arrow-right" 
+      circle
+      color="grey"
+      v-model="page" 
+      :length="pageCount"></v-pagination>
+    </div>
   </v-card>
-  <!-- <v-card>
-    <v-simple-table
-      :fixed-header="fixedHeader"
-    >
-      <template v-slot:default class="text-center" >
-      
-      <thead >
-          <tr style="font-size:large">
-         <th class="text-left">고유번호</th>
-         <th class="text-left">아이디</th>
-         <th class="text-left">비밀번호</th>
-         <th class="text-left">이름</th>
-         <th class="text-left">생일</th>
-         <th class="text-left">성별</th>
-         <th class="text-left">연락처</th>
-         <th class="text-left">이메일</th>
-         <th class="text-left">포인트</th>
-         <th class="text-left">구분</th>
-         <th class="text-left" color="red">블랙 등록</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        <tr v-for="j of lists" :key="j.userid" @click="member(j.name)">
-         <td>{{j.personid}}</td>
-         <td>{{j.userid}}</td>
-         <td>{{j.passwd}}</td>
-         <td>{{j.name}}</td>
-         <td>{{j.birthday}}</td>
-         <td>{{(j.male==1)?'남성':'여성'}}</td>
-         <td>{{j.tel}}</td>
-         <td>{{j.email}}</td>
-         <td>{{j.score}}</td>
-         <td>{{j.role}}</td>
-         <v-checkbox v-model="`{{(j.black)?}}`" label="black"></v-checkbox>
-          </tr>
-        </tbody>
-
-      </template>
-    </v-simple-table>
-   <div class="text-center">
-    <v-pagination
-    v-model="value"
-   value
-    :length="5"
-   circle
-   prev-icon="mdi-arrow-left"
-   next-icon="mdi-arrow-right"
-    ></v-pagination>
- 
-  </div>
-   </v-card> -->
   </div>
 </template>
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 export default {
-  // created(){
-  //   axios
-   //       .get(`${this.context}/customermanage`)
-   //       .then(res =>{
-   //          this.lists = res.data
-   //       })
-   //       .catch(e=>{
-   //          alert('AXIOS FAIL'+e)
-   //       })
-  // },
+  created(){
+    axios
+         .get(`${this.context}/customermanage`)
+         .then(res =>{
+            this.lists = res.data
+         })
+         .catch(e=>{
+            alert('AXIOS FAIL'+e)
+         })
+  },
    data(){
       return{
     context : 'http://localhost:8080',
-      fixedHeader: true,
+    fixedHeader: true,
+    page: 1,
+    pageCount: 0,
+    itemsPerPage: 5,
       value:1,
     lists: [],
     black:false,
     search: '',
         headers: [
           {
-            text: '회원 리스트 ',
+            text: '고유번호',
             align: 'left',
-            filterable: true,
-            value: 'name',
+            filterable: false,
+            value: 'personid',
           },
-          { text: '고유번호', value: 'personid' },
           { text: '아이디', value: 'userid' },
           { text: '비밀번호', value: 'passwd' },
           { text: '이름', value: 'name' },
@@ -126,6 +92,9 @@ export default {
     },
     member(x){
       alert(x+'님 개인 설정')
+    },
+    goto(){
+      alert('search')
     }
 
    }

@@ -8,23 +8,32 @@
      </section>
      <footer id="footer">
           <v-footer dark padless >
-               <v-card flat tile class="flex" style="width:1982px">
+               <v-card flat tile class="flex" style="width:1982px;Padding:0px">
                     <!-- <v-card-title style="place-content:center" >
                          <strong class="mt-1">푸터 타이틀</strong>
                     </v-card-title> -->
                     <!-- <v-divider></v-divider> -->
                     <v-card-text class="">
-                         <v-btn v-for="icon of icons" :key="icon" class="mx-4 white--text" icon>
-                              <v-icon size="24px">{{ icon }}</v-icon>
-                         </v-btn>
                     </v-card-text>
                     <v-card-text class=" white--text py-2" >
                          <v-row no-gutters> 
                               <v-col>
-                                   <strong> 푸터 텍스트</strong>
+                              <v-icon size="30px"> mdi-soccer</v-icon>
+                                   <span style="color:white"> 서비스 지역 </span> <br />
+                                        <a >서울</a><br />
+                                        <a>경기</a> <br />
+                                        <span>인천</span> 
                               </v-col>
+                              <v-btn v-for="icon of icons" :key="icon" class="mx-4 white--text" icon @click="socialgo()">
+                              <v-icon size="24px">{{ icon }}</v-icon>
+                         </v-btn>
+
                               <v-col>
-                                   <strong> 푸터 텍스트2</strong>
+                                   <v-icon size="30px"> mdi-vuetify</v-icon>
+                                   <span> 서울특별시 마포구 마포대로 10길 12 트레퍼빌딩 4층 405호 </span> <br />
+                                   <span> 주식회사 SHIP | 사업자번호 650-81-00575</span> <br />
+                                   <span> 전화 02-704-7983 | contact@gmail.com</span> <br />
+                                   <span> Copyright <strong>SHIP</strong> All rights reserved. </span>
                               </v-col>
                          </v-row>
                     </v-card-text>
@@ -53,7 +62,12 @@ export default {
                          'mdi-instagram',
     ]
           }
-     }
+     },
+     methods:{
+          socialgo(){
+        alert('준비중인 컨텐츠 입니다.')
+      }
+    }
 }
 </script>
 <style scoped>

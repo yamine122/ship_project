@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <v-btn color="black" dark fixed center @click="dialog = !dialog"  style="font-size:15px" > login </v-btn>
+  <v-btn color="indigo darken-1" dark fixed center @click="dialog = !dialog"  style="font-size:15px" > login </v-btn>
     <v-dialog v-model="dialog" width="400px" >
       <v-card >
         <v-card-title class="indigo " font-color="white" > LOGIN </v-card-title>
@@ -9,7 +9,6 @@
             <v-flex xs8  >
               <v-text-field center prepend-icon="people" v-model="userid" label="ID" required></v-text-field>
               <v-text-field prepend-icon="lock" label="PASSWORD" type="password" v-model="passwd"></v-text-field>
-               <v-rating v-model="rating"></v-rating>
             </v-flex>
             
           </v-layout>
